@@ -13,6 +13,9 @@ namespace Quarto_GE_PB
     public partial class Form1 : Form
     {
         public static int n = 4;
+        public static Panel[,] mezo;
+        public static List<PictureBox> babuk;
+        public static PictureBox kivalasztott;
 
         public Form1()
         {
@@ -24,12 +27,15 @@ namespace Quarto_GE_PB
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.MaximizeBox = false;
+
             general();
-            teszt();
+            babu_general();
         }
 
         private void general()
         {
+            mezo = new Panel[n, n];
+
             int szeles = 400 / n;
             int x = 12;
             int y = 12;
@@ -45,6 +51,10 @@ namespace Quarto_GE_PB
                     pan.BorderStyle = BorderStyle.FixedSingle;
                     pan.BackColor = Color.Gray;
 
+                    mezo[i, j] = pan;
+
+                    pan.Click += elhelyez;
+
                     x += szeles;
                 }
                 y += szeles;
@@ -58,23 +68,63 @@ namespace Quarto_GE_PB
             fr.Show();
         }
 
-        private void teszt()
+        private void babu_general()
         {
-            string a = "";
+            babuk = new List<PictureBox>() { };
 
-            for (int i = 0; i < 2; i++)
+            int meret = babukPANEL.Width / 4;
+            int x = 0;
+            int y = 0;
+
+            int sorszam = 0;
+
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < 2; j++)
+                for (int j = 0; j < 4; j++)
                 {
-                    for (int k = 0; k < 2; k++)
-                    {
-                        for (int l = 0; l < 2; l++)
-                        {
-                            a = $"{i}{j}{k}{l}";
-                            MessageBox.Show(a);
-                        }
-                    }
+                    PictureBox pb = new PictureBox();
+                    pb.Size = new Size(meret, meret);
+                    pb.BackgroundImage = kepek.Images[sorszam];
+                    pb.BackgroundImageLayout = ImageLayout.Zoom;
+                    pb.Name = $"{ertekad(sorszam)}PBOX";
+                    pb.Tag = ertekad(sorszam);
+                    babukPANEL.Controls.Add(pb);
+                    babuk.Add(pb);
+                    pb.Click += kiemel;
+                    pb.Location = new Point(x, y);
+
+                    sorszam++;
+
+                    x += meret;
                 }
+                x = 0;
+                y += meret;
+            }
+        }
+
+        private string ertekad(int szam)
+        {
+            return $"{szam / 8 % 2}{szam / 4 % 2}{szam / 2 % 2}{szam % 2}";
+        }
+
+        private void kiemel(object sender, EventArgs e)
+        {
+            kivalasztott = sender as PictureBox;
+            mutatPBOX.BackgroundImage = kivalasztott.BackgroundImage;
+        }
+
+        private void elhelyez(object sender, EventArgs e)
+        {
+            Panel pan = sender as Panel;
+
+            if (kivalasztott != null && pan.Controls.Count == 0)
+            {
+                pan.Controls.Add(kivalasztott);
+                kivalasztott.Location = new Point(0, 0);
+                kivalasztott.Size = new Size(pan.Width, pan.Height);
+                kivalasztott.Enabled = false;
+                kivalasztott = null;
+                mutatPBOX.BackgroundImage = null;
             }
         }
     }
