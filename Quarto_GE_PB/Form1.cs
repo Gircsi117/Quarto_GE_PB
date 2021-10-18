@@ -27,9 +27,6 @@ namespace Quarto_GE_PB
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.MaximizeBox = false;
-
-            general();
-            babu_general();
         }
 
         private void general()
@@ -102,17 +99,21 @@ namespace Quarto_GE_PB
             }
         }
 
+        //4 hosszú bináris kód generátor
         private string ertekad(int szam)
         {
             return $"{szam / 8 % 2}{szam / 4 % 2}{szam / 2 % 2}{szam % 2}";
         }
 
+        //Bábú kiválasztása
         private void kiemel(object sender, EventArgs e)
         {
             kivalasztott = sender as PictureBox;
             mutatPBOX.BackgroundImage = kivalasztott.BackgroundImage;
+            //babukPANEL.Enabled = false;
         }
 
+        //A kiválasztott bábú elhelyezése
         private void elhelyez(object sender, EventArgs e)
         {
             Panel pan = sender as Panel;
@@ -125,7 +126,15 @@ namespace Quarto_GE_PB
                 kivalasztott.Enabled = false;
                 kivalasztott = null;
                 mutatPBOX.BackgroundImage = null;
+                //babukPANEL.Enabled = true;
             }
+        }
+
+        private void startBTN_Click(object sender, EventArgs e)
+        {
+            general();
+            babu_general();
+            (sender as Button).Enabled = false;
         }
     }
 }

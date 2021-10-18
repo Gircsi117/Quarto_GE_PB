@@ -68,18 +68,19 @@ namespace Quarto_GE_PB
             this.startBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.startBTN.Location = new System.Drawing.Point(442, 12);
             this.startBTN.Name = "startBTN";
-            this.startBTN.Size = new System.Drawing.Size(306, 62);
+            this.startBTN.Size = new System.Drawing.Size(309, 62);
             this.startBTN.TabIndex = 2;
             this.startBTN.Text = "Start";
             this.startBTN.UseMnemonic = false;
             this.startBTN.UseVisualStyleBackColor = false;
+            this.startBTN.Click += new System.EventHandler(this.startBTN_Click);
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(6, 439);
+            this.label1.Location = new System.Drawing.Point(12, 440);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(711, 47);
+            this.label1.Size = new System.Drawing.Size(705, 47);
             this.label1.TabIndex = 4;
             this.label1.Text = "Válassz egy bábút!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -138,7 +139,7 @@ namespace Quarto_GE_PB
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(763, 496);
+            this.ClientSize = new System.Drawing.Size(761, 496);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.mutatPBOX);
             this.Controls.Add(this.babukPANEL);
@@ -147,6 +148,7 @@ namespace Quarto_GE_PB
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.alapPANEL);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quarto_GE_PB";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
