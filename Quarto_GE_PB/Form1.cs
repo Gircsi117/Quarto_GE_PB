@@ -25,6 +25,7 @@ namespace Quarto_GE_PB
             this.MinimizeBox = false;
             this.MaximizeBox = false;
             general();
+            teszt();
         }
 
         private void general()
@@ -55,6 +56,26 @@ namespace Quarto_GE_PB
         {
             Form2 fr = new Form2();
             fr.Show();
+        }
+
+        private void teszt()
+        {
+            string a = "";
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    for (int k = 0; k < 2; k++)
+                    {
+                        for (int l = 0; l < 2; l++)
+                        {
+                            a = $"{i}{j}{k}{l}";
+                            MessageBox.Show(a);
+                        }
+                    }
+                }
+            }
         }
     }
 }
