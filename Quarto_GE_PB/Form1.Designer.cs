@@ -34,6 +34,7 @@ namespace Quarto_GE_PB
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.startBTN = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,10 +71,20 @@ namespace Quarto_GE_PB
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(442, 106);
+            this.panel1.Location = new System.Drawing.Point(442, 136);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(56, 52);
             this.panel1.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(442, 86);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(334, 47);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Válassz egy bábút!";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -81,6 +92,7 @@ namespace Quarto_GE_PB
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(791, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.startBTN);
             this.Controls.Add(this.pictureBox1);
@@ -99,6 +111,7 @@ namespace Quarto_GE_PB
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button startBTN;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
