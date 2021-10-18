@@ -33,6 +33,7 @@ namespace Quarto_GE_PB
             this.alapPANEL = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.startBTN = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,12 +68,20 @@ namespace Quarto_GE_PB
             this.startBTN.UseMnemonic = false;
             this.startBTN.UseVisualStyleBackColor = false;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(442, 106);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(56, 52);
+            this.panel1.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(791, 450);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.startBTN);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.alapPANEL);
@@ -89,6 +98,7 @@ namespace Quarto_GE_PB
         private System.Windows.Forms.Panel alapPANEL;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button startBTN;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

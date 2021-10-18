@@ -71,7 +71,7 @@ namespace Quarto_GE_PB
                         for (int l = 0; l < 2; l++)
                         {
                             a = $"{i}{j}{k}{l}";
-                            MessageBox.Show(a);
+                            //MessageBox.Show(a);
                         }
                     }
                 }
