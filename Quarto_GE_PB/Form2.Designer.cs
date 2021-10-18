@@ -66,8 +66,9 @@ namespace Quarto_GE_PB
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(486, 93);
             this.label3.TabIndex = 3;
-            this.label3.Text = "-Méret: magas, alacson\r\n-Szín: sötét, világos\r\n-Alak: kör, négyzet\r\n-Lyukas-e: ig" +
-    "en, nem\r\n";
+            this.label3.Text = "-Méret: alacsony, magas\r\n-Szín: sötét, világos\r\n-Alak: kör, négyzet\r\n-Lyukas-e: n" +
+    "em, igen\r\n";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
