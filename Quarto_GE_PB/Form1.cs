@@ -136,5 +136,40 @@ namespace Quarto_GE_PB
             babu_general();
             (sender as Button).Enabled = false;
         }
+
+        private static bool gyozelem_feltetel()
+        {
+            if (db == 4)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private static int[] scan(Panel[,] tabla)
+        {
+            int db = 0;
+
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 4; col++)
+                {
+                    if(mezo[col, row].Controls.Count == 0) { continue; }
+                    else if(mezo[col, row].Controls.Count != 0)
+                    {
+                        db++;
+
+                        if(db == 4)
+                        {
+                            return new int[2] { col, row };
+                        }
+                    }                    
+                }
+            }
+            return new int[2] { -1, -1 };
+        }
     }
 }
