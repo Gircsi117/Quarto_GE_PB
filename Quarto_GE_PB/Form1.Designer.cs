@@ -97,22 +97,22 @@ namespace Quarto_GE_PB
             // 
             this.kepek.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("kepek.ImageStream")));
             this.kepek.TransparentColor = System.Drawing.Color.Transparent;
-            this.kepek.Images.SetKeyName(0, "0000.jpg");
-            this.kepek.Images.SetKeyName(1, "0001.jpg");
-            this.kepek.Images.SetKeyName(2, "0010.jpg");
-            this.kepek.Images.SetKeyName(3, "0011.jpg");
-            this.kepek.Images.SetKeyName(4, "0100.jpg");
-            this.kepek.Images.SetKeyName(5, "0101.jpg");
-            this.kepek.Images.SetKeyName(6, "0110.jpg");
-            this.kepek.Images.SetKeyName(7, "0111.jpg");
-            this.kepek.Images.SetKeyName(8, "1000.jpg");
-            this.kepek.Images.SetKeyName(9, "1001.jpg");
-            this.kepek.Images.SetKeyName(10, "1010.jpg");
-            this.kepek.Images.SetKeyName(11, "1011.jpg");
-            this.kepek.Images.SetKeyName(12, "1100.jpg");
-            this.kepek.Images.SetKeyName(13, "1101.jpg");
-            this.kepek.Images.SetKeyName(14, "1110.jpg");
-            this.kepek.Images.SetKeyName(15, "1111.jpg");
+            this.kepek.Images.SetKeyName(0, "0000.png");
+            this.kepek.Images.SetKeyName(1, "0001.png");
+            this.kepek.Images.SetKeyName(2, "0010.png");
+            this.kepek.Images.SetKeyName(3, "0011.png");
+            this.kepek.Images.SetKeyName(4, "0100.png");
+            this.kepek.Images.SetKeyName(5, "0101.png");
+            this.kepek.Images.SetKeyName(6, "0110.png");
+            this.kepek.Images.SetKeyName(7, "0111.png");
+            this.kepek.Images.SetKeyName(8, "1000.png");
+            this.kepek.Images.SetKeyName(9, "1001.png");
+            this.kepek.Images.SetKeyName(10, "1010.png");
+            this.kepek.Images.SetKeyName(11, "1011.png");
+            this.kepek.Images.SetKeyName(12, "1100.png");
+            this.kepek.Images.SetKeyName(13, "1101.png");
+            this.kepek.Images.SetKeyName(14, "1110.png");
+            this.kepek.Images.SetKeyName(15, "1111.png");
             // 
             // mutatPBOX
             // 

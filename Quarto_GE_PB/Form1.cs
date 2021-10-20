@@ -83,6 +83,7 @@ namespace Quarto_GE_PB
                     pb.Size = new Size(meret, meret);
                     pb.BackgroundImage = kepek.Images[sorszam];
                     pb.BackgroundImageLayout = ImageLayout.Zoom;
+                    pb.BorderStyle = BorderStyle.FixedSingle;
                     pb.Name = $"{ertekad(sorszam)}PBOX";
                     pb.Tag = ertekad(sorszam);
                     babukPANEL.Controls.Add(pb);
@@ -139,7 +140,7 @@ namespace Quarto_GE_PB
 
         private static bool gyozelem_feltetel()
         {
-            if (db == 4)
+            if (true)
             {
                 return true;
             }
