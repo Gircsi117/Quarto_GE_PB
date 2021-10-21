@@ -84,7 +84,7 @@ namespace Quarto_GE_PB
                     pb.BackgroundImage = kepek.Images[sorszam];
                     pb.BackgroundImageLayout = ImageLayout.Zoom;
                     pb.BorderStyle = BorderStyle.FixedSingle;
-                    pb.Name = $"{ertekad(sorszam)}PBOX";
+                    pb.Name = $"{ertekad(sorszam)}";
                     pb.Tag = ertekad(sorszam);
                     babukPANEL.Controls.Add(pb);
                     babuk.Add(pb);
@@ -138,39 +138,82 @@ namespace Quarto_GE_PB
             (sender as Button).Enabled = false;
         }
 
-        private static bool gyozelem_feltetel()
+        private void konv_sor(List<string> list)
         {
-            if (true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+            int[,] tulajdonsagok = new int[4, 4];
 
-        private static int[] scan(Panel[,] tabla)
-        {
-            int db = 0;
-
-            for (int row = 0; row < 4; row++)
+            for (int element = 0; element < 4; element++)
             {
                 for (int col = 0; col < 4; col++)
                 {
-                    if(mezo[col, row].Controls.Count == 0) { continue; }
-                    else if(mezo[col, row].Controls.Count != 0)
+                    for (int row = 0; row < 4; row++)
                     {
-                        db++;
-
-                        if(db == 4)
-                        {
-                            return new int[2] { col, row };
-                        }
-                    }                    
+                        tulajdonsagok[col, row] = Convert.ToInt32(list[element].Substring(col, 1));
+                    }
                 }
             }
-            return new int[2] { -1, -1 };
+            vizsgal(tulajdonsagok);
+        }
+
+        private static bool vizsgal(int[,] Array)
+        {
+            int db = 0;
+
+            for (int col = 0; col < Array.GetLength(0); col++)
+            {
+                for (int row = 0; row < Array.GetLength(1); row++)
+                {
+                    if(Array[row, col] == 1)
+                    {
+                        db++;
+                        if(db == 4)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return vizsgal(Array);
+        }
+
+        private void scan()
+        {
+            List<string> list = new List<string>();
+
+            //oszlop
+            for (int col = 0; col < 4; col++)
+            {
+                if (mezo[0, col].Controls.Count == 0) { continue; }
+                if (mezo[0, col].Controls.Count != 0)
+                {
+                    for (int row = 0; row < 4; row++)
+                    {
+                        if (mezo[row, col].Controls.Count != 0)
+                        {
+                            list.Add(mezo[row, col].Controls[0].ToString());
+                            if (list.Count == 4) break;
+                        }
+                    }
+                }
+            }
+
+            //sor
+            for (int row = 0; row < 4; row++)
+            {
+                if (mezo[row, 0].Controls.Count == 0) { continue; }
+                if (mezo[row, 0].Controls.Count != 0)
+                {
+                    for (int col = 0; col < 4; col++)
+                    {
+                        if (mezo[row, col].Controls.Count != 0)
+                        {
+                            list.Add(mezo[row, col].Controls[0].ToString());
+                            if (list.Count == 4) break;
+                        }
+                    }
+                }
+            }
+            konv_sor(list);
         }
     }
 }
