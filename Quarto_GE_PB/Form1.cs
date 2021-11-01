@@ -47,9 +47,10 @@ namespace Quarto_GE_PB
                     pan.Size = new Size(szeles, szeles);
                     pan.BorderStyle = BorderStyle.FixedSingle;
                     pan.BackColor = Color.Gray;
+                    pan.Tag = $"{i}{j}";
 
                     mezo[i, j] = pan;
-
+                    
                     pan.Click += elhelyez;
 
                     x += szeles;
@@ -128,6 +129,9 @@ namespace Quarto_GE_PB
                 kivalasztott = null;
                 mutatPBOX.BackgroundImage = null;
                 //babukPANEL.Enabled = true;
+                int rowPos = Convert.ToInt32(pan.Tag.ToString().Substring(0, 1));//i
+                int colPos = Convert.ToInt32(pan.Tag.ToString().Substring(1, 1));//j
+                scan(rowPos, colPos);
             }
         }
 
@@ -140,80 +144,118 @@ namespace Quarto_GE_PB
 
         private void konv_sor(List<string> list)
         {
-            int[,] tulajdonsagok = new int[4, 4];
-
-            for (int element = 0; element < 4; element++)
+            string[,] tulajdonsagok = new string[4, 4];
+            
+            for (int i = 0; i < 4; i++)
             {
-                for (int col = 0; col < 4; col++)
+                for (int j = 0; j < 4; j++)
                 {
-                    for (int row = 0; row < 4; row++)
-                    {
-                        tulajdonsagok[col, row] = Convert.ToInt32(list[element].Substring(col, 1));
-                    }
+                    tulajdonsagok[i, j] = list[i].Substring(j, 1);
                 }
             }
+
+            string teszt = " ";
+            for (int i = 0; i < 4; i++)
+            {
+                teszt += "\n";
+                for (int j = 0; j < 4; j++)
+                {
+                    teszt += Convert.ToString($"{tulajdonsagok[i, j]} ");
+                }
+            }
+            MessageBox.Show($"{teszt}");
+
             vizsgal(tulajdonsagok);
         }
 
-        private static bool vizsgal(int[,] Array)
+        private void vizsgal(string[,] Array)
         {
-            int db = 0;
+            bool nyertel = false;
 
-            for (int col = 0; col < Array.GetLength(0); col++)
+            for (int col = 0; col < 4; col++)
             {
-                for (int row = 0; row < Array.GetLength(1); row++)
+                int db = 0;
+                for (int row = 0; row < 4; row++)
                 {
-                    if(Array[row, col] == 1)
-                    {
-                        db++;
-                        if(db == 4)
-                        {
-                            return true;
-                        }
-                    }
+                    db += Convert.ToInt32(Array[row, col]);
+                }
+                MessageBox.Show($"{db}");
+
+                if (db % 4 == 0 && !nyertel)
+                {
+                    nyertel = true;
+                    MessageBox.Show("Nyertél");
                 }
             }
-            return vizsgal(Array);
         }
 
-        private void scan()
+        private void scan(int rowPos, int colPos)
         {
             List<string> list = new List<string>();
 
-            //oszlop
+            //MessageBox.Show($"{rowPos};{colPos}");
+
+            //sor
             for (int col = 0; col < 4; col++)
             {
-                if (mezo[0, col].Controls.Count == 0) { continue; }
-                if (mezo[0, col].Controls.Count != 0)
+                if (mezo[rowPos, col].Controls.Count != 0)
                 {
-                    for (int row = 0; row < 4; row++)
+                    list.Add(mezo[rowPos, col].Controls[0].Tag.ToString());
+                    if (list.Count == 4)
                     {
-                        if (mezo[row, col].Controls.Count != 0)
+                        /*string asd = "";
+                        for (int i = 0; i < 4; i++)
                         {
-                            list.Add(mezo[row, col].Controls[0].ToString());
-                            if (list.Count == 4) break;
+                            asd += $"{list[i]}; ";
                         }
+                        MessageBox.Show($"{asd} sorok");*/
+                        konv_sor(list);
                     }
                 }
             }
 
-            //sor
+            list = new List<string>();
+            //oszlop
             for (int row = 0; row < 4; row++)
             {
-                if (mezo[row, 0].Controls.Count == 0) { continue; }
-                if (mezo[row, 0].Controls.Count != 0)
+                if (mezo[row, colPos].Controls.Count != 0)
                 {
-                    for (int col = 0; col < 4; col++)
+                    list.Add(mezo[row, colPos].Controls[0].Tag.ToString());
+                    if (list.Count == 4)
                     {
-                        if (mezo[row, col].Controls.Count != 0)
+                        /*string asd = "";
+                        for (int i = 0; i < 4; i++)
                         {
-                            list.Add(mezo[row, col].Controls[0].ToString());
-                            if (list.Count == 4) break;
+                            asd += $"{list[i]}; ";
+                        }
+                        MessageBox.Show($"{asd} oszlopok");*/
+                        konv_sor(list);
+                    }
+                }
+            }
+
+            list = new List<string>();
+            //átló
+            if (colPos == rowPos || colPos == 3 - rowPos)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    int offset = 3;
+                    if(colPos == rowPos)
+                    {
+                        offset = 0;
+                    }
+
+                    if (mezo[i, Math.Abs(offset - i)].Controls.Count != 0)
+                    {
+                        list.Add(mezo[i, Math.Abs(offset - i)].Controls[0].Tag.ToString());
+                        if (list.Count == 4)
+                        {
+                            konv_sor(list);
                         }
                     }
                 }
             }
-            konv_sor(list);
         }
     }
 }
