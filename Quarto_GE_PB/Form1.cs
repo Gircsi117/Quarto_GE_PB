@@ -112,7 +112,6 @@ namespace Quarto_GE_PB
         {
             kivalasztott = sender as PictureBox;
             mutatPBOX.BackgroundImage = kivalasztott.BackgroundImage;
-            //babukPANEL.Enabled = false;
         }
 
         //A kiválasztott bábú elhelyezése
@@ -128,9 +127,8 @@ namespace Quarto_GE_PB
                 kivalasztott.Enabled = false;
                 kivalasztott = null;
                 mutatPBOX.BackgroundImage = null;
-                //babukPANEL.Enabled = true;
-                int rowPos = Convert.ToInt32(pan.Tag.ToString().Substring(0, 1));//i
-                int colPos = Convert.ToInt32(pan.Tag.ToString().Substring(1, 1));//j
+                int rowPos = Convert.ToInt32(pan.Tag.ToString().Substring(0, 1));
+                int colPos = Convert.ToInt32(pan.Tag.ToString().Substring(1, 1));
                 scan(rowPos, colPos);
             }
         }
@@ -154,17 +152,6 @@ namespace Quarto_GE_PB
                 }
             }
 
-            string teszt = " ";
-            for (int i = 0; i < 4; i++)
-            {
-                teszt += "\n";
-                for (int j = 0; j < 4; j++)
-                {
-                    teszt += Convert.ToString($"{tulajdonsagok[i, j]} ");
-                }
-            }
-            MessageBox.Show($"{teszt}");
-
             vizsgal(tulajdonsagok);
         }
 
@@ -175,16 +162,21 @@ namespace Quarto_GE_PB
             for (int col = 0; col < 4; col++)
             {
                 int db = 0;
-                for (int row = 0; row < 4; row++)
-                {
-                    db += Convert.ToInt32(Array[row, col]);
-                }
-                MessageBox.Show($"{db}");
 
                 if (db % 4 == 0 && !nyertel)
                 {
                     nyertel = true;
                     MessageBox.Show("Nyertél");
+
+                    label1.Text = "Bezárhatod a játékot!";
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            mezo[i, j].Enabled = false;
+                        }
+                    }
                 }
             }
         }
@@ -192,8 +184,6 @@ namespace Quarto_GE_PB
         private void scan(int rowPos, int colPos)
         {
             List<string> list = new List<string>();
-
-            //MessageBox.Show($"{rowPos};{colPos}");
 
             //sor
             for (int col = 0; col < 4; col++)
@@ -203,19 +193,14 @@ namespace Quarto_GE_PB
                     list.Add(mezo[rowPos, col].Controls[0].Tag.ToString());
                     if (list.Count == 4)
                     {
-                        /*string asd = "";
-                        for (int i = 0; i < 4; i++)
-                        {
-                            asd += $"{list[i]}; ";
-                        }
-                        MessageBox.Show($"{asd} sorok");*/
                         konv_sor(list);
                     }
                 }
             }
 
-            list = new List<string>();
             //oszlop
+            list = new List<string>();
+            
             for (int row = 0; row < 4; row++)
             {
                 if (mezo[row, colPos].Controls.Count != 0)
@@ -223,19 +208,14 @@ namespace Quarto_GE_PB
                     list.Add(mezo[row, colPos].Controls[0].Tag.ToString());
                     if (list.Count == 4)
                     {
-                        /*string asd = "";
-                        for (int i = 0; i < 4; i++)
-                        {
-                            asd += $"{list[i]}; ";
-                        }
-                        MessageBox.Show($"{asd} oszlopok");*/
                         konv_sor(list);
                     }
                 }
             }
 
-            list = new List<string>();
             //átló
+            list = new List<string>();
+            
             if (colPos == rowPos || colPos == 3 - rowPos)
             {
                 for (int i = 0; i < 4; i++)
